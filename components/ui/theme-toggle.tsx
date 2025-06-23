@@ -44,9 +44,9 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
           )}
         >
           {isDark ? (
-            <Moon className="w-4 h-4 text-white" strokeWidth={1.5} />
+            <Moon className="w-4 h-4 text-gray-200" strokeWidth={1.5} />
           ) : (
-            <Sun className="w-4 h-4 text-gray-700" strokeWidth={1.5} />
+            <Sun className="w-4 h-4 text-[#fb471a]" strokeWidth={1.5} />
           )}
         </div>
         <div
@@ -56,7 +56,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
           )}
         >
           {isDark ? (
-            <Sun className="w-4 h-4 text-gray-500" strokeWidth={1.5} />
+            <Sun className="w-4 h-4 text-[#f6532c]" strokeWidth={1.5} />
           ) : (
             <Moon className="w-4 h-4 text-black" strokeWidth={1.5} />
           )}

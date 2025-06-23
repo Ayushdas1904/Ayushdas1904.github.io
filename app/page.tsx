@@ -1,10 +1,15 @@
-import Image from "next/image";
+'use client';
+import { useState } from 'react';
+import {Home} from "@/components/navPages/Home"
+import { Projects } from '@/components/navPages/Projects';
+import { Contact } from '@/components/navPages/Contact';
 
-export default function Home() {
-   return(
-    <main className="flex min-h-screen flex-col items-center p-24">
-      <h1 className="text-4xl font-bold">Hey, I'm Ayush</h1>
-      <h3 className="mt-4">FULL STACK DEVELOPER</h3>
+export default function HomePage() {
+  return (
+    <main>
+      <Home/>
+      <Projects/>
+      <Contact/>
     </main>
-   )
+  );
 }

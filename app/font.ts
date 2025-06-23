@@ -1,4 +1,10 @@
-import {Metrophobic, Geist, Geist_Mono, JetBrains_Mono } from "next/font/google";
+import {Metrophobic, Geist, Geist_Mono, JetBrains_Mono, Poppins } from "next/font/google";
+
+export const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  variable: '--font-poppins',
+})
 
 export const metrophobic = Metrophobic({
   weight: '400',

@@ -3,50 +3,72 @@
 
 html,
 body {
-  background-color: #ffffff;
-  color: #000000;
-  transition-property: color, background-color;
+  background: linear-gradient(145deg, #f0f3f6, #dbdcdd);
+  background-color: #f8f9fa;
+  color: #1f1f1f;
+  /* transition-property: color, background-color;
   transition-duration: 300ms;
-  background-size: 20px 20px;
+  background-size: 20px 20px; */
 
-  background-image:
+  /* background-image:
     linear-gradient(rgba(0, 0, 0, 0.05) 1.5px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1.5px, transparent 1px);
+    linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1.5px, transparent 1px); */
 }
 
 .dark body {
-  background-color: #000000;
+  background: linear-gradient(145deg, #202428, #23262a);
+  background-color: #2c3035;
   color: #ffffff;
 
-  background-image:
+  /* background-image:
     linear-gradient(rgba(255, 255, 255, 0.05) 1.5px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1.5px, transparent 1px);
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1.5px, transparent 1px); */
 }
 
-/* :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@keyframes wave {
+  0% {
+    transform: rotate(0deg);
+  }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  15% {
+    transform: rotate(14deg);
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  30% {
+    transform: rotate(-8deg);
+  }
+
+  40% {
+    transform: rotate(14deg);
+  }
+
+  50% {
+    transform: rotate(-4deg);
+  }
+
+  60% {
+    transform: rotate(10deg);
+  }
+
+  70% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-} */
+.tailwind-wrapper {
+  color: black !important;
+}
+
+.dark .tailwind-wrapper {
+  color: white !important;
+  /* or any Tailwind theme color */
+}
+
+
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
