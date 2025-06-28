@@ -10,7 +10,7 @@ export default function Preloader() {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setIsLoading(false);
-    }, 2000); // ⏱️ Duration of preloader
+    }, 2000); // Duration of preloader
 
     return () => clearTimeout(timeout);
   }, []);
@@ -20,12 +20,12 @@ export default function Preloader() {
       {isLoading && (
         <motion.div
           className="fixed inset-0 z-[9999] flex items-center justify-center bg-white dark:bg-black text-white dark:text-white"
-          initial={{ opacity: 1 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 1, scale: 1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 80 }}
+          transition={{ duration: 0.8, ease: 'easeInOut' }}
         >
-          <AppleHelloEnglishEffect speed={0.5} />
+          <AppleHelloEnglishEffect speed={0.4} />
         </motion.div>
       )}
     </AnimatePresence>

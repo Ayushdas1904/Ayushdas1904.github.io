@@ -11,7 +11,6 @@ import Preloader from "@/components/Preloader";
 import { LightPullThemeSwitcher } from "@/components/ui/light-pull-theme-switcher";
 import { Component } from "@/components/ui/cursor-follower";
 
-
 export const metadata: Metadata = {
   title: "Das' Portfolio",
   description: "My First Portfolio",
@@ -32,7 +31,7 @@ export default function RootLayout({
           <Component/>
           {/* <ThemeToggle /> */}
           <LightPullThemeSwitcher/>
-          {/* <Preloader /> */}
+          <Preloader />
           <ScrollProgress />
           <Navbar />
           {children}

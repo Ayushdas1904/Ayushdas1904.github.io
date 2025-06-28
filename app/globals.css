@@ -3,57 +3,39 @@
 
 html,
 body {
-  background: linear-gradient(145deg, #f0f3f6, #dbdcdd);
-  background-color: #f8f9fa;
+  background: linear-gradient(145deg, #b9b6cb, #ffffff);
+  background-color: #ffffff;
   color: #1f1f1f;
-  /* transition-property: color, background-color;
-  transition-duration: 300ms;
-  background-size: 20px 20px; */
-
-  /* background-image:
-    linear-gradient(rgba(0, 0, 0, 0.05) 1.5px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1.5px, transparent 1px); */
 }
 
 .dark body {
-  background: linear-gradient(145deg, #202428, #23262a);
-  background-color: #2c3035;
+  background: linear-gradient(145deg, #000000, #24282e);
+  background-color: #000000;
   color: #ffffff;
-
-  /* background-image:
-    linear-gradient(rgba(255, 255, 255, 0.05) 1.5px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1.5px, transparent 1px); */
 }
 
 @keyframes wave {
   0% {
     transform: rotate(0deg);
   }
-
   15% {
     transform: rotate(14deg);
   }
-
   30% {
     transform: rotate(-8deg);
   }
-
   40% {
     transform: rotate(14deg);
   }
-
   50% {
     transform: rotate(-4deg);
   }
-
   60% {
     transform: rotate(10deg);
   }
-
   70% {
     transform: rotate(0deg);
   }
-
   100% {
     transform: rotate(0deg);
   }
