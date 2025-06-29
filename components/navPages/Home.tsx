@@ -45,7 +45,7 @@ export function Home() {
                             👋
                         </span>
                     </div>
-                    <p className='flex items-center mt-4 text-[#dd431d] gap-2 text-sm sm:text-lg text-right'> <MapPin /> Rudrapur, Uttarakhand, India</p>
+                    <p className={` ${jetbrainsMono.className} flex items-center mt-4 text-[#dd431d] gap-2 text-sm sm:text-lg text-right`}> <MapPin /> Rudrapur, Uttarakhand, India</p>
 
                     <span className="tailwind-wrapper mt-4 text-lg sm:text-3xl font-medium block text-left text-zinc-800 dark:text-zinc-200">
                         <Typewriter
