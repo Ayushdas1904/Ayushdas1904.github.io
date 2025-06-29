@@ -8,7 +8,7 @@ import { jetbrainsMono } from '@/app/font';
 import Image from 'next/image';
 import AyushImg from "@/public/Ayush.jpg";
 import AyushImg2 from "@/public/Ayush2.jpeg"
-import { Download, MapPin } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import Socials from '../Socials';
 import { InteractiveHoverButton } from '../ui/interactive-hover-button';
 export function Home() {
@@ -25,11 +25,11 @@ export function Home() {
     
 
     return (
-        <div className="w-full max-w-4xl flex flex-col items-center justify-center px-6 pt-20 pb-65 sm:min-h-screen relative">
+        <div id='home' className="w-full max-w-4xl flex flex-col items-center justify-center px-6 pt-20 pb-65 sm:min-h-screen relative">
             <div className="flex flex-col-reverse md:flex-row items-center md:items-start justify-between gap-10 w-full max-w-5xl">
                 <div className="flex-1">
                     <div className="flex items-center gap-3">
-                        <h1 className="text-3xl sm:text-6xl font-bold ">
+                        <h1 className="text-4xl sm:text-6xl font-bold ">
                             Hey, I&apos;m <span className='text-[#e8390d]'>Ayush</span>
                         </h1>
                         <span

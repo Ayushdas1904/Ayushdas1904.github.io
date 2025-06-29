@@ -62,8 +62,9 @@ export default function Contact() {
           required
           value={form.name}
           onChange={handleChange}
-          className="rounded-lg p-3 bg-background border border-border outline-ring/50"
+          className="rounded-lg p-3 bg-background border border-border focus:border-[#e8390d] focus:ring-[#e8390d] outline-none transition-colors duration-300"
         />
+
         <input
           type="email"
           name="email"
@@ -71,8 +72,9 @@ export default function Contact() {
           required
           value={form.email}
           onChange={handleChange}
-          className="rounded-lg p-3 bg-background border border-border outline-ring/50"
+          className="rounded-lg p-3 bg-background border border-border focus:border-[#e8390d] focus:ring-[#e8390d] outline-none transition-colors duration-300"
         />
+
         <textarea
           name="message"
           rows={5}
@@ -80,8 +82,9 @@ export default function Contact() {
           required
           value={form.message}
           onChange={handleChange}
-          className="rounded-lg p-3 bg-background border border-border outline-ring/50"
+          className="rounded-lg p-3 bg-background border border-border focus:border-[#e8390d] focus:ring-[#e8390d] outline-none transition-colors duration-300"
         />
+
 
         <button
           type="submit"

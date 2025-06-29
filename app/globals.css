@@ -3,9 +3,10 @@
 
 html,
 body {
-  background: linear-gradient(145deg, #b9b6cb, #ffffff);
+  background: linear-gradient(145deg, #d9d8df, #ffffff);
   background-color: #ffffff;
   color: #1f1f1f;
+  scroll-behavior: smooth;
 }
 
 .dark body {
