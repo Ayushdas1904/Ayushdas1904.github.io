@@ -30,7 +30,7 @@ export default function ScrollToTopBtn() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 40 }}
           transition={{ duration: 0.4 }}
-          className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-white text-black shadow-md 
+          className="fixed bottom-20 sm:bottom-12 right-6 z-50 p-3 rounded-full bg-white text-black shadow-md 
                      dark:bg-zinc-900 dark:text-white dark:shadow-lg 
                      border border-gray-200 dark:border-zinc-700 
                      hover:scale-110 transition-transform"

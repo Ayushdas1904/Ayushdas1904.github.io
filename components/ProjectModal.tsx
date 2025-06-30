@@ -5,6 +5,7 @@ import { jetbrainsMono } from "@/app/font";
 import { X, ExternalLink } from "lucide-react";
 import { FiGithub } from "react-icons/fi";
 import Tilt from "react-parallax-tilt";
+import { techIconMap } from "./navPages/Projects";
 
 interface ProjectModalProps {
   title: string;
@@ -110,18 +111,14 @@ export default function ProjectModal({
               </a>
             </div>
 
-            <div className="flex flex-wrap justify-center md:justify-end gap-2">
+            <div className="flex justify-center md:justify-end transition-all duration-500">
               {techStack.map((tech, index) => (
                 <div
                   key={index}
-                  className="rounded border-2 border-black p-1 bg-white"
+                  className={`w-12 h-12 rounded-full bg-white dark:bg-neutral-900 flex items-center justify-center text-[24px] sm:text-[28px] shadow-md transition-all duration-500`}
+                  style={{ zIndex: techStack.length - index }}
                 >
-                  <Image
-                    src={`/${tech}.svg`}
-                    alt={tech}
-                    width={28}
-                    height={28}
-                  />
+                  {techIconMap[tech] || null}
                 </div>
               ))}
             </div>

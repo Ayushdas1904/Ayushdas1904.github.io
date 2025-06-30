@@ -1,69 +1,101 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useState, useEffect, useRef } from "react";
 
-export default function CustomCursor() {
-  const outerRef = useRef<HTMLDivElement>(null);
-  const innerRef = useRef<HTMLDivElement>(null);
-  const [hovered, setHovered] = useState(false);
+export const Cursor = () => {
+  const mousePosition = useRef({ x: 0, y: 0 });
+
+  const dotPosition = useRef({ x: 0, y: 0 });
+  const borderDotPosition = useRef({ x: 0, y: 0 });
+
+  const [renderPos, setRenderPos] = useState({ dot: { x: 0, y: 0 }, border: { x: 0, y: 0 } });
+  const [isHovering, setIsHovering] = useState(false);
+
+  const DOT_SMOOTHNESS = 0.2;
+  const BORDER_DOT_SMOOTHNESS = 0.1;
 
   useEffect(() => {
-    const outer = outerRef.current;
-    const inner = innerRef.current;
-    if (!outer || !inner) return;
-
-    const move = (e: MouseEvent) => {
-      const { clientX: x, clientY: y } = e;
-
-      // Position outer normally
-      outer.style.transform = `translate3d(${x - 20}px, ${y - 20}px, 0)`; // 40x40 = 20px offset
-      // Position inner based on hover size
-      if (hovered) {
-        inner.style.transform = `translate3d(${x - 12}px, ${y - 12}px, 0)`; // 24x24 = 12px offset
-      } else {
-        inner.style.transform = `translate3d(${x - 4}px, ${y - 4}px, 0)`; // 8x8 = 4px offset
-      }
+    const handleMouseMove = (e: MouseEvent) => {
+      mousePosition.current = { x: e.clientX, y: e.clientY };
     };
 
-    const checkHover = (e: MouseEvent) => {
-      let el = e.target as HTMLElement | null;
+    const handleMouseEnter = () => setIsHovering(true);
+    const handleMouseLeave = () => setIsHovering(false);
 
-      while (el && el !== document.body) {
-        const style = window.getComputedStyle(el);
-        if (style.cursor === 'pointer') {
-          setHovered(true);
-          return;
-        }
-        el = el.parentElement;
-      }
-      setHovered(false);
+    // Add event listeners
+    window.addEventListener("mousemove", handleMouseMove);
+
+    // Select interactive elements. Make sure your interactive elements are actually reachable by the mouse.
+    // For elements like div, you might need to add tabindex="0" or make them focusable/clickable.
+    const interactiveElements = document.querySelectorAll("a, button, img, input, textarea, select");
+    interactiveElements.forEach((element) => {
+      element.addEventListener("mouseenter", handleMouseEnter);
+      element.addEventListener("mouseleave", handleMouseLeave);
+    });
+
+    // Animation function for smooth movement
+    const animate = () => {
+      const lerp = (start: number, end: number, factor: number) => {
+        return start + (end - start) * factor;
+      };
+
+      dotPosition.current.x = lerp(dotPosition.current.x, mousePosition.current.x, DOT_SMOOTHNESS);
+      dotPosition.current.y = lerp(dotPosition.current.y, mousePosition.current.y, DOT_SMOOTHNESS);
+
+      borderDotPosition.current.x = lerp(borderDotPosition.current.x, mousePosition.current.x, BORDER_DOT_SMOOTHNESS);
+      borderDotPosition.current.y = lerp(borderDotPosition.current.y, mousePosition.current.y, BORDER_DOT_SMOOTHNESS);
+
+      setRenderPos({
+        dot: { x: dotPosition.current.x, y: dotPosition.current.y },
+        border: { x: borderDotPosition.current.x, y: borderDotPosition.current.y },
+      });
+
+      requestAnimationFrame(animate);
     };
 
-    document.addEventListener('mousemove', move);
-    document.addEventListener('mouseover', checkHover);
+    // Start animation loop
+    const animationId = requestAnimationFrame(animate);
 
+    // Clean up
     return () => {
-      document.removeEventListener('mousemove', move);
-      document.removeEventListener('mouseover', checkHover);
+      window.removeEventListener("mousemove", handleMouseMove);
+
+      interactiveElements.forEach((element) => {
+        element.removeEventListener("mouseenter", handleMouseEnter);
+        element.removeEventListener("mouseleave", handleMouseLeave);
+      });
+
+      cancelAnimationFrame(animationId);
     };
-  }, [hovered]);
+  }, []);
+
+  // Return null on server-side to prevent SSR issues with window/document
+  if (typeof window === "undefined") return null;
 
   return (
-    <>
-      {/* Outer Circle */}
+    <div className="pointer-events-none fixed inset-0 z-100000 sm:block hidden ">
       <div
-        ref={outerRef}
-        className="pointer-events-none fixed top-0 left-0 z-[9999] w-10 h-10 rounded-full border border-black dark:border-white transition-transform duration-150 ease-out"
+        className="absolute rounded-full dark:bg-white bg-black "
+        style={{
+          width: "8px",
+          height: "8px",
+          transform: "translate(-50%, -50%)",
+          left: `${renderPos.dot.x}px`,
+          top: `${renderPos.dot.y}px`,
+        }}
       />
 
-      {/* Inner Dot / Animated Circle */}
       <div
-        ref={innerRef}
-        className={`pointer-events-none fixed top-0 left-0 z-[9999] rounded-full transition-all duration-150 ease-linear
-          ${hovered
-            ? 'w-6 h-6 border border-black dark:border-white'
-            : 'w-2 h-2 bg-black dark:bg-white'}`}
+        className="absolute rounded-full border dark:border-white border-black"
+        style={{
+          width: isHovering ? "44px" : "28px",
+          height: isHovering ? "44px" : "28px",
+          transform: "translate(-50%, -50%)",
+          left: `${renderPos.border.x}px`,
+          top: `${renderPos.border.y}px`,
+          transition: "width 0.3s, height 0.3s",
+        }}
       />
-    </>
+    </div>
   );
-}
+};

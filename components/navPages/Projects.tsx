@@ -30,7 +30,7 @@ const projects = [
   {
     title: "FitBuddy",
     description: "Your personal fitness companion",
-    thumbnail: "/project1.png",
+    thumbnail: "/project2.png",
     techStack: ["ts", "node", "express", "mongo"],
     gradient: "#14f195, rgb(13, 1, 60)",
     github: "https://github.com/Ayushdas1904/FitBuddy",
